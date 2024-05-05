@@ -7,35 +7,19 @@
 class Ship
 {
 public:
-    int getId() const { return id_; }
-    size_t getCapacity() const { return capacity_; }
-    size_t getCrew() const { return crew_; }
-    size_t getMaxCrew() const { return max_crew_; }
-    size_t getSpeed() const { return speed_; }
-    std::string getName() const { return name_; }
-    void setName(const std::string &name) { name_ = name; }
-    Ship() : id_{-1}, capacity_{}, max_crew_{}, speed_{} {}
-    Ship(int id, size_t speed, size_t max_crew) : Ship(id, 0, max_crew, speed, {}) {}
-    Ship(int id, size_t capacity, size_t max_crew, size_t speed, const std::string &name)
-        : id_{id}, capacity_{capacity}, max_crew_{max_crew}, speed_{speed}, name_{name} {}
+    int getId() const;
+    size_t getCapacity() const;
+    size_t getCrew() const;
+    size_t getMaxCrew() const;
+    size_t getSpeed() const;
+    std::string getName() const;
+    void setName(const std::string &name);
+    Ship();
+    Ship(int id, size_t speed, size_t max_crew);
+    Ship(int id, size_t capacity, size_t max_crew, size_t speed, const std::string &name);
 
-    Ship &operator+=(const int new_crewmen)
-    {
-        crew_ += new_crewmen;
-        return *this;
-    }
-    Ship &operator-=(const int crewmen)
-    {
-        if (crew_ > crewmen)
-        {
-            crew_ -= crewmen;
-        }
-        else
-        {
-            crew_ = 0;
-        }
-        return *this;
-    }
+    Ship &operator+=(const int new_crewmen);
+    Ship &operator-=(const int crewmen);
 
 private:
     int id_;
