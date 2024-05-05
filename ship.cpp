@@ -19,7 +19,15 @@ void Ship::load(std::shared_ptr<Cargo> cargo)
     cargo_.emplace_back(cargo);
 }
 
-Ship::Ship() : id_{-1}, capacity_{}, max_crew_{}, speed_{} {}
+void Ship::unload(Cargo *cargo)
+{
+    cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [&cargo](const std::shared_ptr<Cargo> &c)
+                                { return cargo == c.get(); }));
+}
+
+Ship::Ship() : id_{-1}, capacity_{}, max_crew_{}, speed_{}
+{
+}
 
 Ship::Ship(int id, size_t speed, size_t max_crew) : Ship(id, 0, max_crew, speed, {}) {}
 
