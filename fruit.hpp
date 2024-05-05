@@ -1,3 +1,5 @@
+#pragma once
+
 #include "cargo.hpp"
 
 class Fruit : public Cargo
