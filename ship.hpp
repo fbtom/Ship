@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "cargo.hpp"
+#include <memory>
 
 class Ship
 {
@@ -14,6 +15,8 @@ public:
     size_t getSpeed() const;
     std::string getName() const;
     void setName(const std::string &name);
+    void load(std::shared_ptr<Cargo> cargo);
+
     Ship();
     Ship(int id, size_t speed, size_t max_crew);
     Ship(int id, size_t capacity, size_t max_crew, size_t speed, const std::string &name);
@@ -28,5 +31,5 @@ private:
     size_t max_crew_;
     size_t speed_;
     std::string name_;
-    std::vector<Cargo> cargo_;
+    std::vector<std::shared_ptr<Cargo>> cargo_;
 };
