@@ -1,3 +1,4 @@
+#pragma once
 #include "cargo.hpp"
 
 class Fruit : public Cargo
@@ -5,6 +6,6 @@ class Fruit : public Cargo
 public:
     size_t getPrice() const override;
     Fruit &operator--();
-private:
+protected:
     int rot_;
 };
