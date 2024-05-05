@@ -4,28 +4,16 @@
 
 class Cargo
 {
+public:
+    virtual std::string getName() const = 0;
+    virtual size_t getAmount() const = 0;
+    virtual size_t getBasePrice() const = 0;
+    virtual size_t getPrice() const = 0;
+    Cargo &operator+=(const size_t amount);
+    Cargo &operator-=(const size_t amount);
 
-    Cargo &operator+=(const size_t amount)
-    {
-        amount_ += amount;
-        return *this;
-    }
-
-    Cargo &operator-=(const size_t amount)
-    {
-        if (amount_ > amount)
-        {
-            amount_ -= amount;
-        }
-        else
-        {
-            amount_ = 0;
-        }
-        return *this;
-    }
-
-private:
-    size_t amount_;
-    double base_price_;
+protected:
     std::string name_;
+    size_t amount_;
+    size_t base_price_;
 };
